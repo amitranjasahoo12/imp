@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Mart Sales price prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1 style="text-align: center">Big Mart Sales Price Prediction</h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+            <div class="row">
+                <div class="col">
+
+                    <label for="inputAddress"><b>Item_MRP</b> <i>(Maximum Retail Price Of the item)</i></label>
+                    <input type="number" name="Item_MRP" id="Item_MRP" class="form-control" max="10000000" min="0"
+                           placeholder="Enter values">
+
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="inputAddress"><b>Outlet_Type</b> <i>(Type of the product)</i></label>
+                    <select name="Outlet_Type" id="Outlet_Type" class="form-control">
+                        <option value="1">Supermarket Type1</option>
+                        <option value="0">Grocery Store</option>
+                        <option value="3">Supermarket Type3</option>
+                        <option value="2">Supermarket Type2</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>Item_Visibility</b> <i>(Visibility Of the item)</i></label>
+                    <input type="number" name="Item_Visibility" id="Item_Visibility" class="form-control" max="100" min="0"
+                           placeholder="Enter values">
+                </div>
+
+                <div class="col">
+                    <label for="inputAddress"><b>Item_Weight</b> <i>(Item_Weight of the product)</i></label>
+                    <input type="number" name="Item_Weight" id="Item_Weight" class="form-control" max="1000" min="0"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>Item_Type</b> <i>(Type of the product)</i></label>
+                    <select name="Outlet_Type" id="Outlet_Type" class="form-control">
+                        <option value="6">Fruits and Vegetables </option>
+                        <option value="13">Snack Foods </option>
+                        <option value="9">Household  </option>
+                        <option value="5">Frozen Foods </option>
+                        <option value="4">Dairy </option>
+                        <option value="3">Canned </option>
+                        <option value="0">Baking Goods </option>
+                        <option value="8">Health and Hygiene </option>
+                        <option value="14">Sof Drinks </option>
+                        <option value="10">Meat </option>
+                        <option value="1">Breads</option>
+                        <option value="7">Hard Drinks </option>
+                        <option value="11">Others </option>
+                        <option value="15">Starchy Foods </option>
+                        <option value="2">Breakfast</option>
+                        <option value="12">Seafood </option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                    <label for="inputAddress"><b>Outlet_Establishment_Year</b> <i>(Outlet_Establishment_Year)</i></label>
+                    <input type="number" name="Outlet_Establishment_Year" id="Outlet_Establishment_Year" class="form-control" max="10000" min="0"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>Outlet_Size</b> <i>(Outlet_Size)</i></label>
+                    <select name="Outlet_Size" id="Outlet_Size" class="form-control">
+                        <option value="1">Medium</option>
+                        <option value="2">Small</option>
+                        <option value="0">High</option>
+
+                    </select>
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                    <label for="inputAddress"><b>Outlet_Location_Type</b> <i>(Type of Outlet_Location)</i></label>
+                    <select name="Outlet_Location_Type" id="Outlet_Location_Type" class="form-control">
+                        <option value="2">Tier 3</option>
+                        <option value="0">Tier 2</option>
+                        <option value="0">High</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <br/>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">predict :</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% if hasValues%}
+
+<hr/>
+
+<div>
+    <div class="alert alert-success" role="alert"><p> Item_Outlet_Sales <b>{{prediction}}</b></p></div>
+
+
+</div>
+{% endif %}
+{% endblock %}
+
